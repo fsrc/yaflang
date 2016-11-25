@@ -1,0 +1,21 @@
+def main:(args) ->
+  def hello-world "Hello world"
+  def another-world:str "Another world"
+  def my-int:int 9
+  def also-valid-int 10
+  def a-valid-decimal 9.1
+  def another-decimal:dec 2.1
+  def 133t-var "Ha! You wern't prepared for that"
+  def my-function: (a b c) ->
+    stdout.write-line "A function that takes three variables"
+
+  fs.read-file
+    file-name
+    { enc:'utf8' }
+
+    (err result) ->
+      stdout.write-line result
+
+    (err result) ->
+      stdout.write-line result
+
