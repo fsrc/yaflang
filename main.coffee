@@ -4,8 +4,8 @@ _      = require("lodash")
 stream = require("stream")
 
 
-lexer  = require("./streams/lex-stream")
-parser = require("./streams/parse-stream")
+lexer   = require("./streams/lex-stream")
+parser  = require("./streams/parse-stream")
 inspect = require("./streams/inspect-stream")
 
 # Define handy helpers
@@ -30,7 +30,12 @@ main = (files, callback) ->
 
 fs.readdir(PATH, (err, files) ->
   main(files.map((f) -> "#{PATH}/#{f}"), (err, output) ->
-   if err?
-     log("There was an error")
-     log(err)))
+    if err?
+      log("There was an error")
+      log(err)
+    else
+      logfile = fs.createWriteStream('./generated-data.log', { flags: "a", encoding: "utf8" })
+      logfile.write("#########################################")
+      logfile.write(JSON.stringify(output, null, 2))
+    ))
 

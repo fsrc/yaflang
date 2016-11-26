@@ -27,7 +27,6 @@ exports.CURLY_END    = { name: '}',           delimit: exports.DELIMIT_ENDER }
 exports.COLON        = { name: ':',           delimit: exports.DELIMIT_PUNCTUATION }
 exports.DOUBLE_QUOTE = { name: '"',           delimit: exports.DELIMIT_BOTH }
 exports.SINGLE_QUOTE = { name: "'",           delimit: exports.DELIMIT_BOTH }
-exports.PERIOD       = { name: ".",           delimit: exports.DELIMIT_PUNCTUATION }
 exports.NEW_FILE     = { name: "new_file",    delimit: exports.DELIMIT_FILE }
 exports.END_FILE     = { name: "end_file",    delimit: exports.DELIMIT_FILE }
 
@@ -50,7 +49,6 @@ exports.SINGLE_CHAR_TOKEN_MAP =
   ':' : exports.COLON
   '"' : exports.DOUBLE_QUOTE
   "'" : exports.SINGLE_QUOTE
-  "." : exports.PERIOD
 
 exports.KEYWORDS =
   def: { name: "def" }
@@ -62,7 +60,7 @@ exports.KEYWORDS =
 KEYWORD_KEYS           = _.keys(exports.KEYWORDS)
 SINGLE_CHAR_TOKEN_KEYS = _.keys(exports.SINGLE_CHAR_TOKEN_MAP)
 
-exports.IS_SINGLE_CHAR_TOKEN = (value) -> _.indexOf(SINGLE_CHAR_TOKEN_KEYS, value) == -1 ? false : true
+exports.IS_SINGLE_CHAR_TOKEN = (value) -> _.indexOf(SINGLE_CHAR_TOKEN_KEYS, value) != -1 ? false : true
 exports.IS_KEYWORD = (value) -> _.indexOf(KEYWORD_KEYS, value) != -1 ? false : true
 exports.IS_INTEGER = (value) -> /^\d+$/.test(value)
 exports.IS_DECIMAL = (value) -> /^\d+\.\d+$/.test(value)
