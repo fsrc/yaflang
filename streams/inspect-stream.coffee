@@ -12,9 +12,10 @@ colors[D.DELIMIT_PUNCTUATION] = chalk.bold.magenta
 colors[D.DELIMIT_SPACE]       = chalk.dim
 colors[D.DELIMIT_LINE]        = chalk.dim
 colors[D.DELIMIT_LITERAL]     = chalk.white.bold
-colors[D.DELIMIT_KEYWORD]     = chalk.blue
+colors[D.DELIMIT_KEYWORD]     = chalk.blue.bold
 colors[D.DELIMIT_INTEGER]     = chalk.yellow
-colors[D.DELIMIT_DECIMAL]     = chalk.cyan
+colors[D.DELIMIT_DECIMAL]     = chalk.yellow
+colors[D.DELIMIT_STRING]      = chalk.yellow
 
 
 bg = [chalk.bgBlack,
@@ -41,7 +42,8 @@ class InspectStream extends stream.Transform
 
   _transform: (token, enc, next) ->
     if token.type.delimit != D.DELIMIT_FILE
-      process.stdout.write(bg[@bg_index].call(colors[token.type.delimit], (token.value)))
+      # process.stdout.write(bg[@bg_index].call(colors[token.type.delimit], (token.value)))
+      process.stdout.write(colors[token.type.delimit](token.value))
       @bg_index += 1
       if @bg_index > bg.length - 1
         @bg_index = 0

@@ -3,7 +3,6 @@ async  = require("async")
 _      = require("lodash")
 stream = require("stream")
 
-
 lexer   = require("./streams/lex-stream")
 parser  = require("./streams/parse-stream")
 inspect = require("./streams/inspect-stream")
@@ -13,7 +12,12 @@ log   = console.error
 print = console.log
 
 PATH = "./code-examples"
+GENERATED_DATA_LOG_FILE = "./generated-data.log"
 
+log_to_file = (file, text) ->
+  logfile = fs.createWriteStream(file, { flags: "a", encoding: "utf8" })
+  logfile.write(text)
+  logfile.close()
 
 # Entry point for lexer
 main = (files, callback) ->
@@ -29,13 +33,14 @@ main = (files, callback) ->
     .value()
 
 fs.readdir(PATH, (err, files) ->
+  log_to_file(GENERATED_DATA_LOG_FILE, "###################################\n\n")
+
   main(files.map((f) -> "#{PATH}/#{f}"), (err, output) ->
     if err?
       log("There was an error")
       log(err)
     else
-      logfile = fs.createWriteStream('./generated-data.log', { flags: "a", encoding: "utf8" })
-      logfile.write("#########################################")
-      logfile.write(JSON.stringify(output, null, 2))
-    ))
+      log_to_file(
+        GENERATED_DATA_LOG_FILE,
+        JSON.stringify(output) + "\n")))
 
