@@ -15,6 +15,7 @@ colors[D.DELIMIT_LITERAL]     = chalk.white.bold
 colors[D.DELIMIT_KEYWORD]     = chalk.blue.bold
 colors[D.DELIMIT_INTEGER]     = chalk.yellow
 colors[D.DELIMIT_DECIMAL]     = chalk.yellow
+colors[D.DELIMIT_BOOLEAN]     = chalk.yellow
 colors[D.DELIMIT_STRING]      = chalk.yellow
 
 

@@ -12,8 +12,10 @@ endif
 syntax sync fromstart
 
 " Keywords
-syn match yaflKeyword /\<\%(def\|int\|dec\|str\|bool\|fun\)\>/ display
-hi def link yaflKeyword Keyword
+syn match yaflIdentifier /\<\%(def\|int\|dec\|str\|bool\|fun\)\>/ display
+hi def link yaflIdentifier Keyword
+
+
 
 syn match yaflBoolean /\<\%(true\|false\)\>/ display
 hi def link yaflBoolean Boolean
@@ -117,7 +119,7 @@ hi def link yaflParen yaflBlock
 " This is used instead of TOP to keep things yafl-specific for good
 " embedding. `contained` groups aren't included.
 syn cluster yaflAll contains=
-\                              yaflKeyword,
+\                              yaflIdentifier,
 \                              yaflSpecialOp,yaflBoolean,
 \                              yaflString,
 \                              yaflNumber,yaflFloat,

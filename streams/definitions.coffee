@@ -9,8 +9,10 @@ exports.DELIMIT_LINE        = 'line'
 exports.DELIMIT_LITERAL     = 'literal'
 exports.DELIMIT_FILE        = 'file'
 exports.DELIMIT_STRING      = 'string'
+exports.DELIMIT_REGEX       = 'regex'
 exports.DELIMIT_INTEGER     = 'integer'
 exports.DELIMIT_DECIMAL     = 'decimal'
+exports.DELIMIT_BOOLEAN     = 'boolean'
 exports.DELIMIT_BODY        = 'fn'
 
 exports.DELIMIT_KEYWORD     = 'keyword'
@@ -29,14 +31,17 @@ exports.ARROW_END    = { name: '>',           delimit: exports.DELIMIT_ENDER }
 exports.COLON        = { name: ':',           delimit: exports.DELIMIT_PUNCTUATION }
 exports.DOUBLE_QUOTE = { name: '"',           delimit: exports.DELIMIT_BOTH }
 exports.SINGLE_QUOTE = { name: "'",           delimit: exports.DELIMIT_BOTH }
+exports.REGEX_QUOTE  = { name: "/",           delimit: exports.DELIMIT_BOTH }
 exports.NEW_FILE     = { name: "new_file",    delimit: exports.DELIMIT_FILE }
 exports.END_FILE     = { name: "end_file",    delimit: exports.DELIMIT_FILE }
 
 exports.KEYWORD      = { name: "keyword",     delimit: exports.DELIMIT_KEYWORD }
 exports.STRING       = { name: "string",      delimit: exports.DELIMIT_STRING }
+exports.REGEX        = { name: "regex",       delimit: exports.DELIMIT_REGEX }
 
 exports.INTEGER      = { name: "integer",     delimit: exports.DELIMIT_INTEGER }
 exports.DECIMAL      = { name: "decimal",     delimit: exports.DELIMIT_DECIMAL }
+exports.BOOLEAN      = { name: "boolean",     delimit: exports.DELIMIT_BOOLEAN }
 
 exports.SINGLE_CHAR_TOKEN_MAP =
   '\n': exports.NEW_LINE
@@ -53,13 +58,17 @@ exports.SINGLE_CHAR_TOKEN_MAP =
   ':' : exports.COLON
   '"' : exports.DOUBLE_QUOTE
   "'" : exports.SINGLE_QUOTE
+  "/" : exports.REGEX_QUOTE
 
 exports.KEYWORDS =
-  def: { name: "def" }
-  int: { name: "int" }
-  dec: { name: "dec" }
-  str: { name: "str" }
-  fun: { name: "fn" }
+  def:   { name: "def" }
+  int:   { name: "int" }
+  dec:   { name: "dec" }
+  bool:  { name: "bool" }
+  true:  { name: "true" }
+  false: { name: "false" }
+  str:   { name: "str" }
+  fun:   { name: "fn" }
 
 KEYWORD_KEYS           = _.keys(exports.KEYWORDS)
 SINGLE_CHAR_TOKEN_KEYS = _.keys(exports.SINGLE_CHAR_TOKEN_MAP)
@@ -68,4 +77,4 @@ exports.IS_SINGLE_CHAR_TOKEN = (value) -> _.indexOf(SINGLE_CHAR_TOKEN_KEYS, valu
 exports.IS_KEYWORD = (value) -> _.indexOf(KEYWORD_KEYS, value) != -1 ? false : true
 exports.IS_INTEGER = (value) -> /^\d+$/.test(value)
 exports.IS_DECIMAL = (value) -> /^\d+\.\d+$/.test(value)
-
+exports.IS_BOOLEAN = (value) -> /^(true|false)$/.test(value)

@@ -114,3 +114,10 @@ exports.into_strings = (memo, token) ->
 
   memo
 
+exports.into_booleans = (token) ->
+  # Is it an integer?
+  if token.type == D.KEYWORD and D.IS_BOOLEAN(token.value)
+    console.log token
+    token.type = D.BOOLEAN
+
+  token

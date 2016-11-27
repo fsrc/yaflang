@@ -40,6 +40,7 @@ class LexStream extends stream.Transform
       .reduce(classify_tokens.into_strings, [])
       .map(   classify_tokens.into_keywords)
       .map(   classify_tokens.into_numbers)
+      .map(   classify_tokens.into_booleans)
 
     # Pass our tokens on to the next consumer
     _.map(tokens, (token) => @push(token))

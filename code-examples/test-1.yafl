@@ -6,9 +6,12 @@ def main:(args:ary<str> fun
   def a-valid-decimal 9.1
   def another-decimal:dec 2.1
   def 1337-var "Ha! You wern't prepared for that"
+  def mybool:bool true
   def my-function: (a b c fun
     stdout.write-line "A function #{var} that \n takes three variables")
 
+  # Comment
+  # TODO: Think about this
   fs.read-file
     file-name
     { enc:'utf8' }
