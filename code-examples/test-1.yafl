@@ -1,4 +1,4 @@
-def main:(args) ->
+def main:(args:ary<str> fun
   def hello-world "Hello world"
   def another-world:str "Another world"
   def my-int:int 9
@@ -6,16 +6,15 @@ def main:(args) ->
   def a-valid-decimal 9.1
   def another-decimal:dec 2.1
   def 133t-var "Ha! You wern't prepared for that"
-  def my-function: (a b c) ->
-    stdout.write-line "A function that takes three variables"
+  def my-function: (a b c fun
+    stdout.write-line "A function that takes three variables")
 
   fs.read-file
     file-name
     { enc:'utf8' }
 
-    (err result) ->
-      stdout.write-line result
+    (err result fun
+      stdout.write-line result)
 
-    (err result) ->
-      stdout.write-line result
-
+    (err result fun
+      stdout.write-line result))

@@ -11,7 +11,7 @@ exports.DELIMIT_FILE        = 'file'
 exports.DELIMIT_STRING      = 'string'
 exports.DELIMIT_INTEGER     = 'integer'
 exports.DELIMIT_DECIMAL     = 'decimal'
-exports.DELIMIT_BODY        = 'body'
+exports.DELIMIT_BODY        = 'fn'
 
 exports.DELIMIT_KEYWORD     = 'keyword'
 
@@ -24,6 +24,8 @@ exports.SQUARE_START = { name: '[',           delimit: exports.DELIMIT_START }
 exports.SQUARE_END   = { name: ']',           delimit: exports.DELIMIT_ENDER }
 exports.CURLY_START  = { name: '{',           delimit: exports.DELIMIT_START }
 exports.CURLY_END    = { name: '}',           delimit: exports.DELIMIT_ENDER }
+exports.ARROW_START  = { name: '<',           delimit: exports.DELIMIT_START }
+exports.ARROW_END    = { name: '>',           delimit: exports.DELIMIT_ENDER }
 exports.COLON        = { name: ':',           delimit: exports.DELIMIT_PUNCTUATION }
 exports.DOUBLE_QUOTE = { name: '"',           delimit: exports.DELIMIT_BOTH }
 exports.SINGLE_QUOTE = { name: "'",           delimit: exports.DELIMIT_BOTH }
@@ -46,6 +48,8 @@ exports.SINGLE_CHAR_TOKEN_MAP =
   ']' : exports.SQUARE_END
   '{' : exports.CURLY_START
   '}' : exports.CURLY_END
+  '<' : exports.ARROW_START
+  '>' : exports.ARROW_END
   ':' : exports.COLON
   '"' : exports.DOUBLE_QUOTE
   "'" : exports.SINGLE_QUOTE
@@ -55,7 +59,7 @@ exports.KEYWORDS =
   int: { name: "int" }
   dec: { name: "dec" }
   str: { name: "str" }
-  "->": { name: "body" }
+  fun: { name: "fn" }
 
 KEYWORD_KEYS           = _.keys(exports.KEYWORDS)
 SINGLE_CHAR_TOKEN_KEYS = _.keys(exports.SINGLE_CHAR_TOKEN_MAP)
