@@ -5,9 +5,9 @@ def main:(args:ary<str> fun
   def also-valid-int 10
   def a-valid-decimal 9.1
   def another-decimal:dec 2.1
-  def 133t-var "Ha! You wern't prepared for that"
+  def 1337-var "Ha! You wern't prepared for that"
   def my-function: (a b c fun
-    stdout.write-line "A function that takes three variables")
+    stdout.write-line "A function #{var} that \n takes three variables")
 
   fs.read-file
     file-name
@@ -18,3 +18,9 @@ def main:(args:ary<str> fun
 
     (err result fun
       stdout.write-line result))
+
+  my-array.map (itm fun itm).map (itm fun
+    itm)
+
+  map my-array (itm fun itm)
+    .map (itm fun)
